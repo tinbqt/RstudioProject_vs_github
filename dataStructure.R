@@ -62,6 +62,45 @@ df2<- as.data.frame(cbind(vNumeric,vCharacter,vLogical))
 df2
 typeof(df2) #list
 
+x1 <- 1:3
+y <- 1:9
+#df3 and df4 are the same
+df3<- cbind.data.frame(x1,y)
+df4<- as.data.frame(cbind(x1,y))
+typeof(df3) #list
+typeof(df3$x1) #integer
+str(df3)
+typeof(df4) #list
+typeof(df4$x1) #integer
+str(df4)
+#AS FACTOR
+#an attribute of a vector that sepcifies the possible value
+#and their order.
+x2 <- as.factor(c(1:3))
+df5<-cbind.data.frame(x2,y)
+str(df5)
+df5
+typeof(df5) # list
+# DEFINEE EXISTING VARIABLE AS FACTOR #####
+x3<- c(1:3)
+df6<-cbind.data.frame(x3,y)
+(df6$x3 <- factor(df6$x3, levels = c(1,2,3)))
+typeof(df6) #list
+str(df6)
+#'data.frame':	9 obs. of  2 variables:
+#'$ x3: Factor w/ 3 levels "1","2","3": 1 2 3 1 2 3 1 2 3
+# ORDERING AND LABELING
+x7<- c(1:3)
+df7<-cbind.data.frame(x7,y)
+#only <ordered> can change the lable, factor can not change
+(df7$x7 <- ordered(df7$x7
+                  ,levels = c(1,2,3)
+                  ,label=c("maybe","Yes","No")))
+typeof(df7) #list
+str(df7)
+df7
+typeof(df7$x7)
+
 #List
 o1<- c(1,2,3)
 o2<- c("a","b","c","d","e")
